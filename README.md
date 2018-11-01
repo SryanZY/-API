@@ -63,5 +63,21 @@ base64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
 
 ## 对象  
 
+使用for in循环时需要注意的是：  
+1、它只可遍历那些可以遍历的属性，即enumerable为true的属性  
+2、它不仅遍历对象自身的属性，还遍历继承的属性  
 
+## 函数  
+
+## 数组  
+```  
+ES5中将类数组对象转换为数组的方法:  
+Array.prototype.slice.call()  
+类数组对象调用数组的forEach方法  
+Array.prototype.forEach.call(str, function (index, item) {})  
+```  
+
+***  
+
+# 运算符  
 
