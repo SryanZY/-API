@@ -72,7 +72,7 @@ base64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
 ## 数组  
 ```  
 ES5中将类数组对象转换为数组的方法:  
-Array.prototype.slice.call()  
+Array.prototype.slice.call(),ES6中直接使用Array.from()  
 类数组对象调用数组的forEach方法  
 Array.prototype.forEach.call(str, function (index, item) {})  
 ```  
