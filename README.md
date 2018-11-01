@@ -37,4 +37,5 @@ function myselfIsNaN (value) {
 Number.isNaN('15') // false  
 Number.isNaN(true) // false  
 ```  
+**注意在ES6中对于isNaN方法有一些修改，提加了Number.isNaN()来判断，对于非NaN的元素一律返回false**
 
