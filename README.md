@@ -41,4 +41,27 @@ Number.isNaN(true) // false
 
 ## 字符串  
 
+btoa()：任意值转为 Base64 编码  
+atob()：Base64 编码转为原来的值  
+```  
+var string = 'Hello World!';  
+btoa(string) // "SGVsbG8gV29ybGQh"  
+atob('SGVsbG8gV29ybGQh') // "Hello World!"  
+```  
+要将非 ASCII 码字符转为 Base64 编码，必须中间插入一个转码环节，再使用这两个方法。  
+```  
+function base64Encode (str) {
+  return btoa(encodeURIComponent(str))
+}  
+function base64Decode (str) {
+  return atob(decodeURIComponent(str))
+}
+
+base64Encode('你好') // "JUU0JUJEJUEwJUU1JUE1JUJE"  
+base64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"  
+```  
+
+## 对象  
+
+
 
