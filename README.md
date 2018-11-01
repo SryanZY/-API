@@ -31,6 +31,9 @@ isNaN([123]) // false
 判断某个数值是否是NaN最好的方法是根据NaN不等于自身的特点  
 function myselfIsNaN (value) {
   return value !== value
-}  
+}     
+**注意在ES6中对于isNaN方法有一些修改，提加了Number.isNaN()来判断，对于非NaN的元素一律返回false**   
+Number.isNaN('15') // false  
+Number.isNaN(true) // false  
 ```  
 
