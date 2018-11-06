@@ -149,19 +149,19 @@ Number([5]) // 5
 ```  
 // undefined、null转为字符串undefined和null  
 ```  
-String(undefined) // "undefined"
+String(undefined) // "undefined"  
 String(null) // "null"  
 ```  
 
 * Boolean的转换规则:  
 Boolean的转换规则相对简单，除了undefined、null、+0/-0、‘’、NaN剩下的全转换为true  
 ```  
-Boolean(undefined) // false
-Boolean(null) // false
-Boolean(0) // false
-Boolean(NaN) // false
-Boolean('') // false  
-Boolean({}) // true
-Boolean([]) // true
+Boolean(undefined) // false  
+Boolean(null) // false  
+Boolean(0) // false  
+Boolean(NaN) // false  
+Boolean('') // false   
+Boolean({}) // true  
+Boolean([]) // true  
 Boolean(new Boolean(false)) // true  
 ```  
