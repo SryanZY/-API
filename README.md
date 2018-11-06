@@ -148,7 +148,6 @@ Number([5]) // 5
 * String强制类型转换函数的规则如下：  
 ```  
 // undefined、null转为字符串undefined和null  
-```  
 String(undefined) // "undefined"  
 String(null) // "null"  
 ```  
