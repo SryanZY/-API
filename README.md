@@ -139,8 +139,29 @@ Number函数将字符串转为数值，要比parseInt函数严格很多。基本
 parseInt('42 cats') // 42  
 Number('42 cats') // NaN  
 ```  
+
 * Number函数的参数是对象时将返回NaN，除非是包含单个数值的数组  
 ```  
 Number([5]) // 5  
 ```  
 
+* String强制类型转换函数的规则如下：  
+```  
+// undefined、null转为字符串undefined和null  
+```  
+String(undefined) // "undefined"
+String(null) // "null"  
+```  
+
+* Boolean的转换规则:  
+Boolean的转换规则相对简单，除了undefined、null、+0/-0、‘’、NaN剩下的全转换为true  
+```  
+Boolean(undefined) // false
+Boolean(null) // false
+Boolean(0) // false
+Boolean(NaN) // false
+Boolean('') // false  
+Boolean({}) // true
+Boolean([]) // true
+Boolean(new Boolean(false)) // true  
+```  
