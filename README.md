@@ -116,7 +116,7 @@ isOdd(-4)   // false
 
 # 语法专题  
 ## 数据类型转换  
-1. Number强制类型转换函数的规则如下：  
+* Number强制类型转换函数的规则如下：  
 ```  
 // 字符串：如果不可以被解析为数值，返回 NaN  
 Number('324abc') // NaN  
@@ -133,5 +133,14 @@ Number(undefined) // NaN
 
 // null：转成0  
 Number(null) // 0  
+```  
+Number函数将字符串转为数值，要比parseInt函数严格很多。基本上，只要有一个字符无法转成数值，整个字符串就会被转为NaN  
+```  
+parseInt('42 cats') // 42  
+Number('42 cats') // NaN  
+```  
+* Number函数的参数是对象时将返回NaN，除非是包含单个数值的数组  
+```  
+Number([5]) // 5  
 ```  
 
