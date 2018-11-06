@@ -116,4 +116,22 @@ isOdd(-4)   // false
 
 # 语法专题  
 ## 数据类型转换  
+1、 NUmber强制类型转换函数的规则如下：  
+```  
+// 字符串：如果不可以被解析为数值，返回 NaN  
+Number('324abc') // NaN  
+
+// 空字符串转为0  
+Number('') // 0  
+
+// 布尔值：true 转成 1，false 转成 0  
+Number(true) // 1  
+Number(false) // 0  
+
+// undefined：转成 NaN  
+Number(undefined) // NaN  
+
+// null：转成0  
+Number(null) // 0  
+```  
 
