@@ -113,6 +113,7 @@ isOdd(-4)   // false
 2 ** 3 ** 2
 // 512  
 ```  
+***  
 
 # 语法专题  
 ## 数据类型转换  
@@ -163,4 +164,72 @@ Boolean('') // false
 Boolean({}) // true  
 Boolean([]) // true  
 Boolean(new Boolean(false)) // true  
+```  
+
+## 错误处理机制  
+原生错误类型如下:  
+1. SyntaxError 对象-解析代码时发生的语法错误  
+```  
+// 变量名错误  
+var 1a;  
+// Uncaught SyntaxError: Invalid or unexpected token  
+
+// 缺少括号  
+console.log 'hello');  
+// Uncaught SyntaxError: Unexpected string  
+```  
+2. ReferenceError 对象-引用一个不存在的变量时发生的错误  
+```  
+// 使用一个不存在的变量  
+unknownVariable  
+// Uncaught ReferenceError: unknownVariable is not defined  
+```  
+3. RangeError 对象-是一个值超出有效范围时发生的错误  
+```  
+/ 数组长度不得为负数  
+new Array(-1)  
+// Uncaught RangeError: Invalid array length  
+```  
+4. TypeError 对象-变量或参数不是预期类型时发生的错误   
+```  
+new 123  
+// Uncaught TypeError: number is not a func  
+
+var obj = {};  
+obj.unknownMethod()  
+// Uncaught TypeError: obj.unknownMethod is not a function  
+```  
+5. URIError 对象-URI 相关函数的参数不正确时抛出的错误  
+```  
+decodeURI('%2')  
+// URIError: URI malformed  
+```  
+6. EvalError 对象-eval函数没有被正确执行时，会抛出EvalError错误。该错误类型已经不再使用了，
+只是为了保证与以前代码兼容，才继续保留  
+
+## console对象与控制台  
+
+* 对于某些复合型的数据，console.table可以将其整理成表格显示  
+```  
+var languages = [
+  { name: "JavaScript", fileExtension: ".js" },
+  { name: "TypeScript", fileExtension: ".ts" },
+  { name: "CoffeeScript", fileExtension: ".coffee" }
+];  
+console.table(languages); 
+```  
+
+* console.dir方法用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示  
+**该方法对于输出 DOM 对象非常有用，因为会显示 DOM 对象的所有属性**  
+```  
+console.dir(document.body)  
+```  
+Node 环境之中，还可以指定以代码高亮的形式输出  
+```  
+console.dir(obj, {colors: true})  
+```  
+* 控制台命令行API  
+```  
+$$(selector)-返回选中的 DOM 对象，等同于document.querySelectorAll  
+inspect(object)-打开相关面板，并选中相应的元素，显示它的细节  
 ```  
