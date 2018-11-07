@@ -233,3 +233,40 @@ console.dir(obj, {colors: true})
 $$(selector)-返回选中的 DOM 对象，等同于document.querySelectorAll  
 inspect(object)-打开相关面板，并选中相应的元素，显示它的细节  
 ```  
+
+# 标准库  
+## Object对象  
+
+通常来讲Object.keys()和Object.getOwnPropertyNames()方法获得的结果一样，只是前者不能返回不可枚举的属性
+而后者可以返回。  
+```  
+var a = ['Hello', 'World'];
+Object.keys(obj) // ["p1", "p2"]
+Object.getOwnPropertyNames(obj) // ["p1", "p2", "length"]
+对于数组来说，length是不可枚举的，所以只出现在Object.getOwnPropertyNames中
+```  
+
+*可以通过Object.prototype.toString.call方法来准确判断元素类型*  
+```  
+var type = function (o){
+  var s = Object.prototype.toString.call(o);
+  return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
+
+type({}); // "object"
+type([]); // "array"
+type(5); // "number"
+type(null); // "null"
+type(); // "undefined"
+type(/abcd/); // "regex"
+type(new Date()); // "date"
+```  
+
+```  
+var date = new Date();
+date.toString() // "Tue Jan 01 2018 12:01:33 GMT+0800 (CST)"
+date.toLocaleString() // "1/01/2018, 12:01:33 PM" 
+日期的实例对象的toString和toLocaleString返回值不一样，而且toLocaleString的返回值跟用户设定的所在地域相关
+```  
+
+## 属性描述对象  
