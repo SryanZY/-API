@@ -233,6 +233,7 @@ console.dir(obj, {colors: true})
 $$(selector)-返回选中的 DOM 对象，等同于document.querySelectorAll  
 inspect(object)-打开相关面板，并选中相应的元素，显示它的细节  
 ```  
+***
 
 # 标准库  
 ## Object对象  
