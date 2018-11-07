@@ -316,3 +316,14 @@ obj.p3 // "123abc"
 ```  
 ***一旦设置了取值函数get或者存值函数set，就不能将writable属性设为true，或者同时定义value属性，否则会报错***  
 *Object.defineProperty()和Object.defineProperties()参数里面的属性描述对象，writable、configurable、enumerable这三个属性的默认值都为false*  
+
+如果一个对象的属性enumerable设置为false,那么Object.keys()、for in以及JSON.stringify（）都不会取到该属性  
+
+控制对象状态（冰冻对象）
+```
+Object.preventExtensions(): 可以使得一个对象无法再添加新的属性
+Object.seal(): 使得一个对象既无法添加新属性，也无法删除旧属性,它只是禁止新增或删除属性，并不影响修改某个属性的值
+Object.freeze(): 可以使得一个对象无法添加新属性、无法删除旧属性、也无法改变属性的值，使得这个对象实际上变成了常量
+```  
+
+## Array对象  
