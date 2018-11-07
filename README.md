@@ -284,3 +284,35 @@ writable 是一个布尔值，表示属性值（value）是否可改变（即是
 enumerable 是一个布尔值，表示该属性是否可遍历(可枚举)，默认为true。如果设为false，会使得某些操作（比如for...in循环、Object.keys()）跳过该属性
 configurable 是一个布尔值，表示可配置性，默认为true。如果设为false，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（value属性除外）。也就是说，configurable属性控制了属性描述对象的可写性
 ```  
+
+**Object.getOwnPropertyDescriptor()方法只能用于对象自身的属性，不能用于继承的属性**  
+
+关于Object.defineProperty、Object.defineProperties:  
+```  
+var obj = Object.defineProperty({}, 'p', {
+  value: 123,
+  writable: false,
+  enumerable: true,
+  configurable: false
+});
+
+obj.p // 123
+obj.p = 246;
+obj.p // 123,因为writeable设置为false，所以只可读不可写
+
+如果一次性定义或修改多个属性，可以使用Object.defineProperties()方法
+var obj = Object.defineProperties({}, {
+  p1: { value: 123, enumerable: true },
+  p2: { value: 'abc', enumerable: true },
+  p3: { get: function () { return this.p1 + this.p2 },
+    enumerable:true,
+    configurable:true
+  }
+});
+
+obj.p1 // 123
+obj.p2 // "abc"
+obj.p3 // "123abc"
+```  
+***一旦设置了取值函数get或者存值函数set，就不能将writable属性设为true，或者同时定义value属性，否则会报错***  
+*Object.defineProperty()和Object.defineProperties()参数里面的属性描述对象，writable、configurable、enumerable这三个属性的默认值都为false*  
