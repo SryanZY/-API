@@ -397,7 +397,7 @@ reduce方法
 指定默认值对空数组尤其有用，至少不会出现报错的情况
 ```  
 
-indexOf、lastIndexOf不能用来搜索NaN的位置，即它们无法确定数组成员是否包含NaN  
+indexOf、lastIndexOf用来查找元素第一次（最后一次）出现的位置，不能用来搜索NaN的位置，即它们无法确定数组成员是否包含NaN  
 ```  
 [NaN].indexOf(NaN) // -1
 [NaN].lastIndexOf(NaN) // -1
