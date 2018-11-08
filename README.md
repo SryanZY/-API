@@ -328,3 +328,77 @@ Object.freeze(): 可以使得一个对象无法添加新属性、无法删除旧
 ```  
 
 ## Array对象  
+```  
+// 单个非数值（比如字符串、布尔值、对象等）作为参数，则该参数是返回的新数组的成员  
+new Array('abc') // ['abc']  
+new Array([1]) // [Array[1]]  
+
+// 多参数时，所有参数都是返回的新数组的成员
+new Array(1, 2) // [1, 2]
+new Array('a', 'b', 'c') // ['a', 'b', 'c']
+```  
+如果数组成员是undefined或者null或者空位，调用join()方法会被转换成空字符串  
+```  
+[undefined, null].join('#')
+// '#'
+
+['a',, 'b'].join('-')
+// 'a--b'
+```  
+
+slice方法的一个重要应用，是将类似数组的对象转为真正的数组  
+```  
+Array.prototype.slice.call({ 0: 'a', 1: 'b', length: 2 })
+// ['a', 'b']
+Array.prototype.slice.call(document.querySelectorAll("div"))
+Array.prototype.slice.call(arguments)
+```  
+
+**splice**  
+splice方法用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。
+第一个参数是删除的起始位置（从0开始），第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素
+```  
+var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+a.splice(4, 2) // ["e", "f"]
+a // ["a", "b", "c", "d"]
+
+var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+a.splice(4, 2, 1, 2) // ["e", "f"]
+a // ["a", "b", "c", "d", 1, 2]
+```  
+
+*map、forEach方法不会跳过undefined和null，但是会跳过空位*  
+
+*对于空数组，some方法返回false，every方法返回true，回调函数都不会执行*  
+
+reduce方法  
+```  
+方法的第一个参数都是一个函数。该函数接受以下四个参数：
+1、累积变量，默认为数组的第一个成员
+2、当前变量，默认为数组的第二个成员
+3、当前位置（从0开始）
+4、原数组
+如果要对累积变量指定初值，可以把它放在reduce方法和reduceRight方法的第二个参数
+[1, 2, 3, 4, 5].reduce(function (a, b) {
+  console.log(a, b);
+  return a + b;
+})
+// 1 2
+// 3 3
+// 6 4
+// 10 5
+//最后结果：15
+
+[1, 2, 3, 4, 5].reduce(function (a, b) {
+  return a + b;
+}, 10);
+// 25
+上面代码指定参数a的初值为10，所以数组从10开始累加，最终结果为25。注意，这时b是从数组的第一个成员开始遍历。
+指定默认值对空数组尤其有用，至少不会出现报错的情况
+```  
+
+indexOf、lastIndexOf不能用来搜索NaN的位置，即它们无法确定数组成员是否包含NaN  
+```  
+[NaN].indexOf(NaN) // -1
+[NaN].lastIndexOf(NaN) // -1
+```  
